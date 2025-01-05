@@ -35,7 +35,7 @@ This Movies Telegram Bot allows users to:
 ### Step 1: Clone the repository
 Clone the repository to your local machine:
 
-`git clone https://github.com/YourUsername/MoviesTelegramBot.git`
+`git clone https://github.com/MaksymMishchenko/MoviesTelegramBot.git`
 `cd MoviesTelegramBot`
 
 ### Step 2: Configure the Database
@@ -55,8 +55,9 @@ Create a bot on Telegram by talking to BotFather and obtain your API Key.
 Add the API key to the appsettings.json file:
 
 `"TelegramBot": {
-  "ApiKey": "your_telegram_bot_api_key"
-}`
+    "ApiKey": "7480202458:AAGTHC66vyBSIZO..."
+  },
+  "AdminChatId": "123456789"`
 
 ### Step 4: Run the Project
 Build and run the application:
