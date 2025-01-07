@@ -1,0 +1,53 @@
+name: Mail Workflow
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    # Завантаження коду з репозиторію
+    - name: Checkout code
+      uses: actions/checkout@v3
+
+    # Встановлення .NET
+    - name: Setup .NET
+      uses: actions/setup-dotnet@v3
+      with:
+        dotnet-version: 8.0 # Змініть версію .NET, якщо потрібно
+
+    # Встановлення залежностей
+    - name: Install dependencies
+      run: dotnet restore
+
+    # Запуск перевірки стилю коду (lint)
+    - name: Run code lint
+      run: dotnet format --check
+
+    # Збірка проєкту
+    - name: Build project
+      run: dotnet build --no-restore --configuration Release
+
+    # Запуск тестів
+    - name: Run tests
+      run: dotnet test --no-build --configuration Release
+
+  analyze:
+    runs-on: ubuntu-latest
+
+    steps:
+    # Завантаження коду з репозиторію
+    - name: Checkout code
+      uses: actions/checkout@v3
+
+    # Перевірка файлів на помилки (наприклад, перевірка форматування)
+    - name: Run additional analysis
+      run: echo "This is where additional analysis like SonarQube can be added."
+
